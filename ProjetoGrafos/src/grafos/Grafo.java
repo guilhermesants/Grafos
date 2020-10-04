@@ -1,4 +1,4 @@
-package grafos.grafo;
+package grafos;
 
 import java.util.Scanner;
 

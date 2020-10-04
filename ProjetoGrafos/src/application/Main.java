@@ -1,6 +1,7 @@
-package grafos.application;
+package application;
 
-import grafos.grafo.Grafo;
+
+import grafos.Grafo;
 
 public class Main {
 
