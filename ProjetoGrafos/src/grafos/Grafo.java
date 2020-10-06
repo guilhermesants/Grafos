@@ -28,7 +28,7 @@ public class Grafo<T> {
 		for (int i = 0; i < this.vertices.length; i++)
 		{
 			var posicaoVertice = i + 1;
-			System.out.print("Informe a quantidade de adjacentes do " + posicaoVertice + "º vértice");
+			System.out.print("Informe a quantidade de adjacentes do " + posicaoVertice + "º vértice: ");
 			var adjacentes = scan.nextInt();
 			
 			var listaDeVertices = new ListaLigada<Object>();
@@ -54,7 +54,6 @@ public class Grafo<T> {
 			
 			this.vertices[i] = (T) listaDeVertices;
 		}
-		scan.close();
 	}
 	
 	/*
@@ -66,6 +65,26 @@ public class Grafo<T> {
 		{
 			ListaLigada<?> list =  (ListaLigada<?>) this.vertices[i];
 			print(list);
+		}
+	}
+	
+	/*
+	 * Método retorna uma lista Ligada, percorre o vetor e encontra o vertice
+	 */
+	public void getAdjacentes(T vertice)
+	{
+		for (int i = 0; i < this.vertices.length; i++)
+		{
+			ListaLigada<?> list = (ListaLigada<?>) this.vertices[i];
+			
+			var vert = list.getNoInicial().getValue();
+			
+			if (vert.equals(vertice))
+			{
+				System.out.println("Exibindo adjacentes do vértice " + vertice);
+				print(list);
+			}
+			
 		}
 	}
 	
