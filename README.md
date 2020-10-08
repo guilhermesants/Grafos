@@ -7,8 +7,26 @@ Guilherme Teixeira e José Jhonatan
 ## Descrição
 Dentre as formas para representar grafos, este código apresenta a Lista de Adjacência que consiste em um vetor e, em cada indice deste vetor, uma lista encadeada do tipo T.
 
-O projeto tem implementado, até o momento, a classe No (do tipo T), a classe ListaLigada onde são implementados os métodos de "adicionar", "tamanho" e, "iterator". Tem implementado a classe Grafo (do tipo T), nesta classe temos um atributo (vetor[]) do tipo t, onde representa os vértices, no contrutor é passado o tamanho desde vetor. Dentro desta classe possui um método "adcionaAdjacentesLista", onde é percorrido este vetor. Em cada índice é informado o número (quantidade) de adjacentes que o vertice terá, tendo como primeiro elemento da ListaLigada o próprio vértice. Então é criado um loop para captura destes elementos e adicionado na ListaLigada. Por conseguinte este índice recebe o endereço da ListaLigada. A classe Grafo tem tambem implementado um método publico "print" onde é percorrido o vetor e em cada índice uma ListaLigada, tem implementado um método privado também "print", onde recebe como parametro uma ListaLigada de Objectos para exibir os elementos deste Lista. Método criado para evitar repetiçao de código, caso posteriormente seja necessario exibir novamente a lista.
+O projeto tem implementado até o momento a classe "No", a classe "ListaLigada", a classe "Grafo" e classe "Main"
+Na classe "Grafo<T>" encontram-se os métodos "adicionaAdjacentesLista", método "print", método "getAdjacentes", método "eRegular", método "eCompleto".
+  
+O método adicionaAdjacentesLista vai percorrer o vetor (atributo da classe) e em cada indice apontando para uma ListaLigada instanciada em mémoria, com 
+aquantidade de vértices também informados, sendo que o primeiro vértice da lista é o proprio vértice que está sendo informado seus adjacentes.
 
-Na classe Main é instanciado um objeto Grafo passando tres Vértices.
+O método print vai exibir o grafo e adjacentes. Dentro do loop ele exibe a ListaLigada em cada índice.
 
-Exemplo da execução: Irá solicitar a quantidade de adjacentes deste prmeiro vértice,e por exemplo é colocado a quantidade 3. Então será informado o proprio vértice (para primeiro elemento da ListaLigada), por exemplo "A". Em seguida é percorrido três vezes o loop solicitando os adjacentes desde vertice "A". Como exemplo "C" e "D". Assim que sair do método para adicionar os adjacentes é exibido no console: A -> C -> D Este foi apenas um exemplo da execução.
+O método getAdjacentes vai retornar a ListaLigada de determinado vértice. Na classe No<T> existe um método getNoInicial, onde retorna o primeiro elemento da lista.
+O primeiro elemento da ListaLigada então é comparado com o vertice passado como parâmetro.
+  
+O método eRegular vai retornar true caso os vértices possuiem a mesma quantidade de adjacentes, caso contrario retorna false.
+É pego a ListaLigada da primeira posição do vetor e comparado o tamanho dela com as demais ListasLigadas dos outros índices.
+
+O método eCompleto vai retornar true caso dado vertice é adjacentes aos demais vértices, caso contrário, false.
+É instanciado uma ListaLigada recebendo a Lista do vetor na posição zero.
+Então é instanciado um array onde serão adicionados os vértices das proximas ListasLigadas, isto em cada iteração. Por conseguinte, é verificado se os vértices
+da ListaLigada da posicao zero estão dentro do array.
+
+Na classe Main:
+Possui o método "instanciaGrafo" onde é solicitado o tipo de objeto para representar os vértices (Integer ou String).
+Foram criados os métodos "verificaRegularidade", "verificaCompleto" e "menuOpcoes" para melhor organização do código
+No método main possui as opções de entrada onde a pessoa escolhe escolher.
