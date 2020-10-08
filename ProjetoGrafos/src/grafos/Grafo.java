@@ -10,7 +10,7 @@ public class Grafo<T> {
 	private T[] vertices;
 	
 	/*
-	 * Contrutor, tendo como parametro o tamanho da lista (quantidade de vértices)
+	 * Contrutor, tendo como parametro o tamanho da lista (quantidade de vï¿½rtices)
 	 */
 	public Grafo(int vertices)
 	{
@@ -18,17 +18,17 @@ public class Grafo<T> {
 	}
 	
 	/*
-	 * Método percorre o vetor adicionando os vertices adjacentes em cada posição
+	 * Mï¿½todo percorre o vetor adicionando os vertices adjacentes em cada posiï¿½ï¿½o
 	 */
 	@SuppressWarnings("unchecked")
 	public void adicionaAdjacentesLista()
 	{
-		System.out.println("Você criou uma lista de " + this.vertices.length + " vertices");
+		System.out.println("Vocï¿½ criou uma lista de " + this.vertices.length + " vertices");
 		
 		for (int i = 0; i < this.vertices.length; i++)
 		{
 			var posicaoVertice = i + 1;
-			System.out.print("Informe a quantidade de adjacentes do " + posicaoVertice + "º vértice: ");
+			System.out.print("Informe a quantidade de adjacentes do " + posicaoVertice + "ï¿½ vï¿½rtice: ");
 			var adjacentes = scan.nextInt();
 			
 			var listaDeVertices = new ListaLigada<Object>();
@@ -39,12 +39,12 @@ public class Grafo<T> {
 				T vertice = null;
 				if (cont == 0)
 				{
-					System.out.print("Esta primeira posição recebe o vertice em si: ");
+					System.out.print("Esta primeira posiï¿½ï¿½o recebe o vertice em si: ");
 					vertice = (T) scan.next();
 				}
 				else 
 				{
-					System.out.print("Informe o Vértice adjacente ao " + posicaoVertice + "º vértice: ");
+					System.out.print("Informe o Vï¿½rtice adjacente ao " + posicaoVertice + "ï¿½ vï¿½rtice: ");
 					vertice = (T) scan.next();
 				}
 				
@@ -57,7 +57,7 @@ public class Grafo<T> {
 	}
 	
 	/*
-	 * metodo percorre a lista exibindo em cada posiçao a lista ligada de Object
+	 * metodo percorre a lista exibindo em cada posiï¿½ao a lista ligada de Object
 	 */
 	public void print()
 	{
@@ -69,7 +69,7 @@ public class Grafo<T> {
 	}
 	
 	/*
-	 * Método retorna uma lista Ligada, percorre o vetor e encontra o vertice
+	 * Mï¿½todo retorna uma lista Ligada, percorre o vetor e encontra o vertice
 	 */
 	public void getAdjacentes(T vertice)
 	{
@@ -81,13 +81,49 @@ public class Grafo<T> {
 			
 			if (vert.equals(vertice))
 			{
-				System.out.println("Exibindo adjacentes do vértice " + vertice);
+				System.out.println("Exibindo adjacentes do vï¿½rtice " + vertice);
 				print(list);
 			}
 			
 		}
 	}
 	
+	/*
+	 * MÃ©todo retorna se o vertice Ã© adjacentes aos demais vertices
+	 * Ã‰ criado uma array para adicionar os vertices da ListaLigada
+	 * do indice 0.
+	 * Entao Ã© verificado se as demais ListasLigadas contÃ©m vertices
+	 * que foram adicionados no array;
+	 */
+	public boolean eCompleto()
+	{
+		ListaLigada<?> list = (ListaLigada<?>) this.vertices[0];
+		
+		var it = list.iterator();
+		
+		List<Object> listaDeVertices = new ArrayList<>();
+		
+		while (it.hasNext())
+		{
+			listaDeVertices.add(it.next());
+		}
+		
+		for (int i = 1; i < this.vertices.length; i++)
+		{
+			ListaLigada<?> proxLista = (ListaLigada<?>) this.vertices[i];
+			
+			it = proxLista.iterator();
+			
+			while (it.hasNext())
+			{
+				if (!listaDeVertices.contains(it.next()))
+				{
+					return false;
+				}
+			}
+		}
+		return true;
+	}
 	private void print(ListaLigada<?> lista)
 	{
 		for (Object t : lista)
